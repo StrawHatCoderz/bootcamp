@@ -38,10 +38,10 @@ public class Chance {
   }
 
   public Chance or(Chance anotherChance) {
-    Chance notA = of(this.value).not();
-    Chance notB = of(anotherChance.value).not();
-    Chance notAAndNotB = of(notA.value).and(notB);
+    return this.not().and(anotherChance.not()).not();
+  }
 
-    return of(notAAndNotB.value).not();
+  public Chance orDeMorgan(Chance anotherChance) {
+    return this.not().and(anotherChance.not()).not();
   }
 }
