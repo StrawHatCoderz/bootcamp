@@ -1,6 +1,9 @@
 package com.tw.bootcamp.problem2;
 
 import org.junit.jupiter.api.Test;
+
+import java.security.InvalidParameterException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChanceTest {
@@ -12,20 +15,38 @@ class ChanceTest {
   }
 
   @Test
+  void chanceOfGettingTailWithOneCoinPassingInvalidValue() {
+    assertThrows(
+            InvalidParameterException.class,
+            () -> Chance.of(1.5)
+    );
+    assertThrows(
+            InvalidParameterException.class,
+            () -> Chance.of(-1)
+    );
+  }
+
+  @Test
   void chanceOfGettingNotTailWithOneCoin() {
     Chance chanceOfGettingNotATail = Chance.of(0.5).not();
     assertEquals(new Chance(0.5), chanceOfGettingNotATail);
   }
 
   @Test
-  void chanceOfGettingTailWithTwoCoins() {
-    Chance chanceOfGettingTails = Chance.of(0.5);
-    assertEquals(new Chance(0.5), chanceOfGettingTails);
+  void chanceOfGettingOnlyTailWithTwoCoins() {
+    Chance chanceOfGettingTails = Chance.of(0.25);
+    assertEquals(new Chance(0.25), chanceOfGettingTails);
   }
 
   @Test
   void chanceOfGettingThreeOnADice() {
     Chance chanceOfGettingThree = Chance.of(0.166);
     assertEquals(new Chance(0.166), chanceOfGettingThree);
+  }
+
+  @Test
+  void chanceOfGettingAtLeastOneTailWithTwoCoins() {
+    Chance chanceOfGettingTails = Chance.of(0.75);
+    assertEquals(new Chance(0.75), chanceOfGettingTails);
   }
 }
