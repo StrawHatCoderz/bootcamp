@@ -27,4 +27,9 @@ public class Chance {
     Chance chance = (Chance) o;
     return Double.compare(value, chance.value) == 0;
   }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
 }
