@@ -41,8 +41,8 @@ class ChanceTest {
   @Test
   void chanceOfGettingThreeOnADice() {
     int totalFaces = 6;
-    int tailAtLeastOnce = 1;
-    double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
+    int threeAtLeastOnce = 1;
+    double favourableOutcomes = (double) threeAtLeastOnce/ totalFaces;
 
     Chance chance = new Chance();
     assertEquals(0.16, chance.of(favourableOutcomes,
