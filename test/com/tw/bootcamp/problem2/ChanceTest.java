@@ -7,45 +7,25 @@ class ChanceTest {
 
   @Test
   void chanceOfGettingTailWithOneCoin() {
-    int totalFaces = 2;
-    int tailAtLeastOnce = 1;
-    double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
-
-    Chance chance = new Chance();
-    assertEquals(0.5, chance.of(favourableOutcomes,
-            1));
+    Chance chanceOfGettingTails = Chance.of(0.5);
+    assertEquals(new Chance(0.5), chanceOfGettingTails);
   }
 
   @Test
   void chanceOfGettingNotTailWithOneCoin() {
-    int totalFaces = 2;
-    int tailAtLeastOnce = 1;
-    double favourableOutcomes = 1 - (double) tailAtLeastOnce/ totalFaces;
-
-    Chance chance = new Chance();
-    assertEquals(0.5, chance.of(favourableOutcomes,
-            1));
+    Chance chanceOfGettingNotATail = Chance.of(0.5).not();
+    assertEquals(new Chance(0.5), chanceOfGettingNotATail);
   }
 
   @Test
   void chanceOfGettingTailWithTwoCoins() {
-    int totalFaces = 4;
-    int tailAtLeastOnce = 3;
-    double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
-
-    Chance chance = new Chance();
-    assertEquals(0.75, chance.of(favourableOutcomes,
-            1));
+    Chance chanceOfGettingTails = Chance.of(0.5);
+    assertEquals(new Chance(0.5), chanceOfGettingTails);
   }
 
   @Test
   void chanceOfGettingThreeOnADice() {
-    int totalFaces = 6;
-    int threeAtLeastOnce = 1;
-    double favourableOutcomes = (double) threeAtLeastOnce/ totalFaces;
-
-    Chance chance = new Chance();
-    assertEquals(0.16, chance.of(favourableOutcomes,
-            1), 0.1);
+    Chance chanceOfGettingThree = Chance.of(0.166);
+    assertEquals(new Chance(0.166), chanceOfGettingThree);
   }
 }
