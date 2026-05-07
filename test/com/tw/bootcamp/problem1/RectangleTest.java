@@ -9,12 +9,12 @@ class RectangleTest {
   @Test
   void shouldCalculateAreaOfRectangleWithValidLengthAndBreadth() {
     Rectangle rectangle = new Rectangle(15,10);
-    assertEquals(150, rectangle.calculateArea(), 0.0);
+    assertEquals(150, rectangle.area(), 0.0);
   }
 
   @Test
   void shouldCalculatePerimeterOfRectangleWithValidLengthAndBreadth() {
     Rectangle rectangle = new Rectangle(15,10);
-    assertEquals(50, rectangle.calculatePerimeter(), 0.0);
+    assertEquals(50, rectangle.perimeter(), 0.0);
   }
 }
