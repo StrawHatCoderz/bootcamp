@@ -11,7 +11,7 @@ class ChanceTest {
   @Test
   void chanceOfGettingTailWithOneCoin() {
     Chance chanceOfGettingTails = Chance.of(0.5);
-    assertEquals(new Chance(0.5), chanceOfGettingTails);
+    assertEquals("0.5", chanceOfGettingTails.toString());
   }
 
   @Test
@@ -29,25 +29,25 @@ class ChanceTest {
   @Test
   void chanceOfGettingNotTailWithOneCoin() {
     Chance chanceOfGettingNotATail = Chance.of(0.5).not();
-    assertEquals(new Chance(0.5), chanceOfGettingNotATail);
+    assertEquals("0.5", chanceOfGettingNotATail.toString());
   }
 
   @Test
   void chanceOfGettingOnlyTailWithTwoCoins() {
     Chance chanceOfGettingTwoTails = Chance.of(0.5).and(Chance.of(0.5));
-    assertEquals(new Chance(0.25), chanceOfGettingTwoTails);
+    assertEquals("0.25", chanceOfGettingTwoTails.toString());
   }
 
   @Test
   void chanceOfGettingThreeOnADice() {
     Chance chanceOfGettingThree = Chance.of(0.166);
-    assertEquals(new Chance(0.166), chanceOfGettingThree);
+    assertEquals("0.166", chanceOfGettingThree.toString());
   }
 
   @Test
   void chanceOfGettingAtLeastOneTailWithTwoCoins() {
     Chance chanceOfGettingAtLeastOneTail = Chance.of(0.5).or(Chance.of(0.5));
 
-    assertEquals(new Chance(0.75), chanceOfGettingAtLeastOneTail);
+    assertEquals("0.75", chanceOfGettingAtLeastOneTail.toString());
   }
 }

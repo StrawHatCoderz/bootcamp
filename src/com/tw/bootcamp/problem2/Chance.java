@@ -4,7 +4,7 @@ import java.security.InvalidParameterException;
 
 public class Chance {
   private final double value;
-  public Chance(double value) {
+  private Chance(double value) {
     this.value = value;
   }
 
