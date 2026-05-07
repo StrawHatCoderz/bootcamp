@@ -1,5 +1,7 @@
 package com.tw.bootcamp.problem2;
 
+import java.security.InvalidParameterException;
+
 public class Chance {
   private final double value;
   public Chance(double value) {
@@ -7,6 +9,10 @@ public class Chance {
   }
 
   public static Chance of(double value) {
+    if (value < 0 && value > 1) {
+      throw new InvalidParameterException("Chance should be greater than 1");
+    }
+
     return new Chance(value);
   }
 
