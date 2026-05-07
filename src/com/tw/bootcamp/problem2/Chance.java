@@ -10,7 +10,7 @@ public class Chance {
 
   public static Chance of(double value) {
     if (value < 0 || value > 1) {
-      throw new InvalidParameterException("Chance should be less than 1 and " +
+      throw new ImpossibleChanceError("Chance should be less than 1 and " +
               "greater than 0");
     }
 

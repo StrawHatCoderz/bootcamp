@@ -17,11 +17,11 @@ class ChanceTest {
   @Test
   void chanceOfGettingTailWithOneCoinPassingInvalidValue() {
     assertThrows(
-            InvalidParameterException.class,
+            ImpossibleChanceError.class,
             () -> Chance.of(1.5)
     );
     assertThrows(
-            InvalidParameterException.class,
+            ImpossibleChanceError.class,
             () -> Chance.of(-1)
     );
   }
