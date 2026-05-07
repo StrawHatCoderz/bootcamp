@@ -4,7 +4,8 @@ import com.tw.bootcamp.problem1.shapes.Rectangle;
 
 public class App {
   static void main() {
-    Rectangle rectangle = new Rectangle(10, 10);
+    Rectangle rectangle = new Rectangle(15, 10);
     System.out.println(rectangle.calculateArea());
+    System.out.println(rectangle.calculatePerimeter());
   }
 }
