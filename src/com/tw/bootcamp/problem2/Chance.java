@@ -32,4 +32,12 @@ public class Chance {
   public String toString() {
     return String.valueOf(value);
   }
+
+  public Chance and(Chance anotherChance) {
+    return of(this.value * anotherChance.value);
+  }
+
+  public Chance or(Chance anotherChance) {
+    return of((this.value + anotherChance.value) - (this.value * anotherChance.value));
+  }
 }

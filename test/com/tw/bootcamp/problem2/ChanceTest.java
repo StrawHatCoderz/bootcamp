@@ -34,8 +34,8 @@ class ChanceTest {
 
   @Test
   void chanceOfGettingOnlyTailWithTwoCoins() {
-    Chance chanceOfGettingTails = Chance.of(0.25);
-    assertEquals(new Chance(0.25), chanceOfGettingTails);
+    Chance chanceOfGettingTwoTails = Chance.of(0.5).and(Chance.of(0.5));
+    assertEquals(new Chance(0.25), chanceOfGettingTwoTails);
   }
 
   @Test
@@ -46,7 +46,8 @@ class ChanceTest {
 
   @Test
   void chanceOfGettingAtLeastOneTailWithTwoCoins() {
-    Chance chanceOfGettingTails = Chance.of(0.75);
-    assertEquals(new Chance(0.75), chanceOfGettingTails);
+    Chance chanceOfGettingAtLeastOneTail = Chance.of(0.5).or(Chance.of(0.5));
+
+    assertEquals(new Chance(0.75), chanceOfGettingAtLeastOneTail);
   }
 }
