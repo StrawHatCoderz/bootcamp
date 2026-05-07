@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ChanceTest {
 
   @Test
-  void changeOfGettingTailWithOneCoin() {
+  void chanceOfGettingTailWithOneCoin() {
     int totalFaces = 2;
     int tailAtLeastOnce = 1;
     double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
@@ -17,10 +17,10 @@ class ChanceTest {
   }
 
   @Test
-  void changeOfGettingNotTailWithOneCoin() {
+  void chanceOfGettingNotTailWithOneCoin() {
     int totalFaces = 2;
     int tailAtLeastOnce = 1;
-    double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
+    double favourableOutcomes = 1 - (double) tailAtLeastOnce/ totalFaces;
 
     Chance chance = new Chance();
     assertEquals(0.5, chance.of(favourableOutcomes,
@@ -28,7 +28,7 @@ class ChanceTest {
   }
 
   @Test
-  void changeOfGettingTailWithTwoCoins() {
+  void chanceOfGettingTailWithTwoCoins() {
     int totalFaces = 4;
     int tailAtLeastOnce = 3;
     double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
@@ -39,7 +39,7 @@ class ChanceTest {
   }
 
   @Test
-  void changeOfGettingThreeOnADice() {
+  void chanceOfGettingThreeOnADice() {
     int totalFaces = 6;
     int tailAtLeastOnce = 1;
     double favourableOutcomes = (double) tailAtLeastOnce/ totalFaces;
