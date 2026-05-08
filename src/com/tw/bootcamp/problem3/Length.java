@@ -23,8 +23,7 @@ public class Length {
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Length that = (Length) o;
-    return Double.compare(this.lengthUnit.toBase(this.value),
-            that.lengthUnit.toBase(that.value)) == 0;
+    return Math.abs(this.lengthUnit.toBase(this.value) - that.lengthUnit.toBase(that.value)) < 0.1;
   }
 
   @Override
