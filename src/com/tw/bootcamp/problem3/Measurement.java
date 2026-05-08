@@ -22,15 +22,12 @@ public class Measurement {
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Measurement that = (Measurement) o;
-    return Double.compare(value, that.value) == 0 && Objects.equals(unit, that.unit);
+    return Double.compare(this.unit.toBase(this.value),
+            that.unit.toBase(that.value)) == 0;
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(value, unit);
-  }
-
-  public boolean isEqualsTo(Measurement other) {
-    return this.unit.toBase(this.value) == other.unit.toBase(other.value);
   }
 }
