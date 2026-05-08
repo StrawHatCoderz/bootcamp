@@ -34,10 +34,9 @@ public class Measurement {
     if (this.unit.equals("ft")) {
       return new Measurement(this.value * 12, "in");
     } else if (this.unit.equals("cm")) {
-      return new Measurement(this.value / 2.5, "in");
+      return new Measurement(this.value * 0.4, "in");
     } else {
       return new Measurement(this.value, this.unit);
     }
-
   }
 }
