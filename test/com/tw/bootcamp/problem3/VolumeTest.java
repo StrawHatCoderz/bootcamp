@@ -20,4 +20,13 @@ class VolumeTest {
     assertTrue(gal.equals(l));
   }
 
+  @Test
+  void shouldAddGallonWithLitersValue() throws InvalidMeasurementValue {
+    Volume gal = Volume.create(1, VolumeUnit.GALLON);
+    Volume l = Volume.create(1, VolumeUnit.LITER);
+
+    Volume expected = Volume.create(4.78, VolumeUnit.LITER);
+    assertEquals(expected, l.add(gal));
+  }
+
 }

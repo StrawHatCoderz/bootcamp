@@ -23,12 +23,18 @@ public class Volume {
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Volume that = (Volume) o;
-    return Double.compare(this.volumeUnit.toBase(this.value),
-            that.volumeUnit.toBase(that.value)) == 0;
+    return Math.abs(this.volumeUnit.toBase(this.value) - that.volumeUnit.toBase(that.value)) < 0.1;
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(value, volumeUnit);
+  }
+
+  public Volume add(Volume other) {
+    double volumeUnitBase = this.volumeUnit.toBase(this.value);
+    double otherVolumeUnitBase = other.volumeUnit.toBase(other.value);
+
+    return new Volume(otherVolumeUnitBase + volumeUnitBase, this.volumeUnit);
   }
 }
