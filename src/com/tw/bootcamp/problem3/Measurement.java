@@ -11,7 +11,10 @@ public class Measurement {
     this.unit = unit;
   }
 
-  public static Measurement create(double value, String unit) {
+  public static Measurement create(double value, String unit) throws InvalidMeasurementValue {
+    if (value < 0) {
+      throw new InvalidMeasurementValue("Value should be positive");
+    }
     return new Measurement(value, unit);
   }
 
@@ -28,6 +31,9 @@ public class Measurement {
   }
 
   public Measurement toInch() {
-    return new Measurement(this.value * 12, "in");
+    if (this.unit.equals("ft")) {
+      return new Measurement(this.value * 12, "in");
+    }
+    return new Measurement(this.value / 2.5, "in");
   }
 }
