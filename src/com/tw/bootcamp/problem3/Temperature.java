@@ -13,8 +13,6 @@ public class Temperature {
     return new Temperature(value, unit);
   }
 
-
-
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
