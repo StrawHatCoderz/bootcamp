@@ -4,32 +4,31 @@ import java.util.Objects;
 
 public class Volume {
   private final double value;
-  private final Unit unit;
+  private final VolumeUnit volumeUnit;
 
-  public Volume(double value, Unit unit) {
+  public Volume(double value, VolumeUnit volumeUnit) {
     this.value = value;
-    this.unit = unit;
+    this.volumeUnit = volumeUnit;
   }
 
-  public static Volume create(double value, Unit unit) throws InvalidMeasurementValue {
+  public static Volume create(double value, VolumeUnit volumeUnit) throws InvalidMeasurementValue {
     if (value < 0) {
       throw new InvalidMeasurementValue("Value should be positive");
     }
 
-    return new Volume(value, unit);
+    return new Volume(value, volumeUnit);
   }
 
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Volume that = (Volume) o;
-    return Double.compare(this.unit.toBase(this.value),
-            that.unit.toBase(that.value)) == 0;
+    return Double.compare(this.volumeUnit.toBase(this.value),
+            that.volumeUnit.toBase(that.value)) == 0;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, unit);
+    return Objects.hash(value, volumeUnit);
   }
-
 }

@@ -9,14 +9,14 @@ class VolumeTest {
 
   @Test
   void shouldCreateALiterUnit() throws InvalidMeasurementValue {
-    Volume l = Volume.create(1, Unit.LITER);
-    assertEquals(Volume.create(1, Unit.LITER), l);
+    Volume l = Volume.create(1, VolumeUnit.LITER);
+    assertEquals(Volume.create(1, VolumeUnit.LITER), l);
   }
 
   @Test
   void shouldCompareGallonWithItsLitersValue() throws InvalidMeasurementValue {
-    Volume gal = Volume.create(1, Unit.GALLON);
-    Volume l = Volume.create(3.78, Unit.LITER);
+    Volume gal = Volume.create(1, VolumeUnit.GALLON);
+    Volume l = Volume.create(3.78, VolumeUnit.LITER);
     assertTrue(gal.equals(l));
   }
 

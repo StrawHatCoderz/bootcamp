@@ -1,0 +1,16 @@
+package com.tw.bootcamp.problem3;
+
+public enum VolumeUnit {
+  GALLON(3.78),
+  LITER(1);
+
+  private final double baseValue;
+
+  VolumeUnit(double baseValue) {
+    this.baseValue = baseValue;
+  }
+
+  public double toBase(double value) {
+    return value * this.baseValue;
+  }
+}

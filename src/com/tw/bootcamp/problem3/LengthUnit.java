@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3;
 
-public enum Unit {
+public enum LengthUnit {
   FEET(12),
   CENTIMETER(0.4),
   INCH(1),
@@ -10,7 +10,7 @@ public enum Unit {
 
   private final double baseValue;
 
-  Unit(double baseValue) {
+  LengthUnit(double baseValue) {
     this.baseValue = baseValue;
   }
   
