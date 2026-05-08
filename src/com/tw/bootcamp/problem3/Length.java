@@ -33,6 +33,8 @@ public class Length {
   }
 
   public Length add(Length other) {
-    return new Length(this.value + other.value, this.lengthUnit);
+    double lengthUnitBase = this.lengthUnit.toBase(this.value);
+    double otherLengthUnitBase = other.lengthUnit.toBase(other.value);
+    return new Length(otherLengthUnitBase + lengthUnitBase, this.lengthUnit);
   }
 }

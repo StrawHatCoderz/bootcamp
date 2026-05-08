@@ -53,4 +53,13 @@ class LengthTest {
     Length result = Length.create(4, LengthUnit.INCH);
     assertEquals(result, in.add(in) );
   }
+
+  @Test
+  void shouldAddTwoDifferentLengths() throws InvalidMeasurementValue {
+    Length in = Length.create(2, LengthUnit.INCH);
+    Length cm = Length.create(2.5, LengthUnit.CENTIMETER);
+
+    Length expected = Length.create(3, LengthUnit.INCH);
+    assertEquals(expected, in.add(cm));
+  }
 }
