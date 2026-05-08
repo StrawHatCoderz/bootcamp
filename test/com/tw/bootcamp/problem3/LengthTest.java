@@ -30,20 +30,29 @@ class LengthTest {
   void shouldCompareFeetWithItsInchValue() throws InvalidMeasurementValue {
     Length ft = Length.create(1, Unit.FEET);
     Length in = Length.create(12, Unit.INCH);
-    assertTrue(ft.equals(in));
+    assertEquals(ft, in);
   }
 
   @Test
   void shouldCompareCmWithItsInchValue() throws InvalidMeasurementValue {
     Length cm = Length.create(5, Unit.CENTIMETER);
     Length in = Length.create(2, Unit.INCH);
-    assertTrue(cm.equals(in));
+    assertEquals(cm, in);
   }
 
   @Test
   void shouldCompareMilliMeterWithItsCentiMeterValue() throws InvalidMeasurementValue {
     Length cm = Length.create(1, Unit.CENTIMETER);
     Length mm = Length.create(10, Unit.MILLIMETER);
-    assertTrue(cm.equals(mm));
+    assertEquals(cm, mm);
   }
+
+  @Test
+  void shouldAddTwoValues() throws InvalidMeasurementValue {
+    Length in = Length.create(2, Unit.INCH);
+    Length result = Length.create(4, Unit.INCH);
+    assertEquals(result, in.add(in) );
+  }
+
+
 }
