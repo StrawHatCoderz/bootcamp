@@ -26,4 +26,8 @@ public class Measurement {
   public int hashCode() {
     return Objects.hash(value, unit);
   }
+
+  public Measurement toInch() {
+    return new Measurement(this.value * 12, "in");
+  }
 }
