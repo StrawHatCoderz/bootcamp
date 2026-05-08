@@ -1,7 +1,5 @@
 package com.tw.bootcamp.problem2;
 
-import java.security.InvalidParameterException;
-
 public class Chance {
   private final double value;
   private Chance(double value) {

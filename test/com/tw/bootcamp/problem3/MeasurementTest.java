@@ -8,35 +8,35 @@ class MeasurementTest {
 
   @Test
   void shouldCreateAFeetUnit() throws InvalidMeasurementValue {
-    Measurement ft = Measurement.create(1, "ft");
-    assertEquals(Measurement.create(1, "ft"), ft);
+    Measurement ft = Measurement.create(1, Unit.FEET);
+    assertEquals(Measurement.create(1, Unit.FEET), ft);
   }
 
   @Test
   void shouldCreateAInchUnit() throws InvalidMeasurementValue {
-    Measurement in = Measurement.create(12, "in");
-    assertEquals(Measurement.create(12, "in"), in);
+    Measurement in = Measurement.create(12, Unit.INCH);
+    assertEquals(Measurement.create(12, Unit.INCH), in);
   }
 
   @Test
   void shouldThrowErrorOnInvalidMeasurement() throws InvalidMeasurementValue {
     assertThrows(
             InvalidMeasurementValue.class,
-            () -> Measurement.create(-12, "in")
+            () -> Measurement.create(-12, Unit.INCH)
     );
   }
 
   @Test
   void shouldCompareFeetWithItsInchValue() throws InvalidMeasurementValue {
-    Measurement ft = Measurement.create(1, "ft");
-    Measurement in = Measurement.create(12, "in");
+    Measurement ft = Measurement.create(1, Unit.FEET);
+    Measurement in = Measurement.create(12, Unit.INCH);
     assertEquals(ft.toBase(), in.toBase());
   }
 
   @Test
   void shouldCompareCmWithItsInchValue() throws InvalidMeasurementValue {
-    Measurement cm = Measurement.create(5, "cm");
-    Measurement in = Measurement.create(2, "in");
+    Measurement cm = Measurement.create(5, Unit.CENTIMETER);
+    Measurement in = Measurement.create(2, Unit.INCH);
     assertEquals(cm.toBase(), in.toBase());
   }
 }

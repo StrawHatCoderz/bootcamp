@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Measurement {
   private final double value;
-  private final String unit;
+  private final Unit unit;
 
-  public Measurement(double value, String unit) {
+  public Measurement(double value, Unit unit) {
     this.value = value;
     this.unit = unit;
   }
 
-  public static Measurement create(double value, String unit) throws InvalidMeasurementValue {
+  public static Measurement create(double value, Unit unit) throws InvalidMeasurementValue {
     if (value < 0) {
       throw new InvalidMeasurementValue("Value should be positive");
     }
@@ -31,12 +31,6 @@ public class Measurement {
   }
 
   public Measurement toBase() {
-    if (this.unit.equals("ft")) {
-      return new Measurement(this.value * 12, "in");
-    } else if (this.unit.equals("cm")) {
-      return new Measurement(this.value * 0.4, "in");
-    } else {
-      return new Measurement(this.value, this.unit);
-    }
+    return new Measurement(this.unit.toBase(this.value), Unit.INCH);
   }
 }
