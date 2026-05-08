@@ -26,18 +26,17 @@ class MeasurementTest {
     );
   }
 
-
   @Test
   void shouldCompareFeetWithItsInchValue() throws InvalidMeasurementValue {
     Measurement ft = Measurement.create(1, "ft");
     Measurement in = Measurement.create(12, "in");
-    assertEquals(ft.toInch(), in);
+    assertEquals(ft.toBase(), in.toBase());
   }
 
   @Test
   void shouldCompareCmWithItsInchValue() throws InvalidMeasurementValue {
     Measurement cm = Measurement.create(5, "cm");
     Measurement in = Measurement.create(2, "in");
-    assertEquals(cm.toInch(), in);
+    assertEquals(cm.toBase(), in.toBase());
   }
 }

@@ -30,10 +30,14 @@ public class Measurement {
     return Objects.hash(value, unit);
   }
 
-  public Measurement toInch() {
+  public Measurement toBase() {
     if (this.unit.equals("ft")) {
       return new Measurement(this.value * 12, "in");
+    } else if (this.unit.equals("cm")) {
+      return new Measurement(this.value / 2.5, "in");
+    } else {
+      return new Measurement(this.value, this.unit);
     }
-    return new Measurement(this.value / 2.5, "in");
+
   }
 }
