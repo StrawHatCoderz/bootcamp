@@ -30,7 +30,7 @@ public class Measurement {
     return Objects.hash(value, unit);
   }
 
-  public Measurement toBase() {
-    return new Measurement(this.unit.toBase(this.value), Unit.INCH);
+  public boolean isEqualsTo(Measurement other) {
+    return this.unit.toBase(this.value) == other.unit.toBase(other.value);
   }
 }
