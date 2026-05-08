@@ -4,7 +4,9 @@ public enum Unit {
   FEET(12),
   CENTIMETER(0.4),
   INCH(1),
-  MILLIMETER(0.04);
+  MILLIMETER(0.04),
+  GALLON(3.78),
+  LITER(1);
 
   private final double baseValue;
 

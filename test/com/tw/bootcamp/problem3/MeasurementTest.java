@@ -46,4 +46,11 @@ class MeasurementTest {
     Measurement mm = Measurement.create(10, Unit.MILLIMETER);
     assertTrue(cm.equals(mm));
   }
+
+  @Test
+  void shouldCompareGallonWithItsLitersValue() throws InvalidMeasurementValue {
+    Measurement gal = Measurement.create(1, Unit.GALLON);
+    Measurement l = Measurement.create(3.78, Unit.LITER);
+    assertTrue(gal.equals(l));
+  }
 }
