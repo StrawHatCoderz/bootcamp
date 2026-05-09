@@ -41,7 +41,11 @@ public class Bag {
       return false;
     }
 
-    capacity++;
+    if (!ball.getColor().canAdd()) {
+      return false;
+    }
+
+    capacity = capacity + 1;
     organizeBall(ball);
     return true;
   }
@@ -53,6 +57,7 @@ public class Bag {
       balls.put(color, new ArrayList<>());
     }
 
+    color.incrementCurrentCount();
     balls.get(color).add(ball);
   }
 }

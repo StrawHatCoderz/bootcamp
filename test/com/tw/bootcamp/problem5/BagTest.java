@@ -30,15 +30,22 @@ class BagTest {
   }
 
   @Test
-  void shouldOrganizeBallsInBag() {
-    Bag bag = Bag.create(6);
+  void shouldNotAddMoreThanThreeGreen() {
+    Bag bag = Bag.create(12);
     bag.add(Ball.create(Color.GREEN));
-    bag.add(Ball.create(Color.RED));
-    bag.add(Ball.create(Color.YELLOW));
-    bag.add(Ball.create(Color.RED));
+    bag.add(Ball.create(Color.GREEN));
+    bag.add(Ball.create(Color.GREEN));
+
+    assertFalse(bag.add(Ball.create(Color.GREEN)));
+  }
+
+  @Test
+  void shouldNotAddRedMoreThanGreenDouble() {
+    Bag bag = Bag.create(12);
+    bag.add(Ball.create(Color.GREEN));
     bag.add(Ball.create(Color.RED));
     bag.add(Ball.create(Color.RED));
 
-    assertFalse(bag.add(Ball.create(Color.BLUE)));
+    assertFalse(bag.add(Ball.create(Color.RED)));
   }
 }
