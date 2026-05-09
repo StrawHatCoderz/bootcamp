@@ -8,7 +8,7 @@ class ParkingLotTest {
   @Test
   void shouldParkACar() {
     ParkingLot parkingLot = ParkingLot.create(1);
-    parkingLot.park("C");
+    parkingLot.park(new Car());
     assertTrue(parkingLot.isFull());
   }
 }
