@@ -19,13 +19,26 @@ class BagTest {
   @Test
   void shouldAddABallToBag() {
     Bag bag = Bag.create(12);
-    assertTrue(bag.add(new Ball("black")));
+    assertTrue(bag.add(Ball.create(Color.BLUE)));
   }
 
   @Test
   void shouldNotAddAfterExceedingCapacity() {
     Bag bag = Bag.create(1);
-    bag.add(new Ball("black"));
-    assertFalse(bag.add(new Ball("black")));
+    bag.add(Ball.create(Color.BLUE));
+    assertFalse(bag.add(Ball.create(Color.BLUE)));
+  }
+
+  @Test
+  void shouldOrganizeBallsInBag() {
+    Bag bag = Bag.create(6);
+    bag.add(Ball.create(Color.GREEN));
+    bag.add(Ball.create(Color.RED));
+    bag.add(Ball.create(Color.YELLOW));
+    bag.add(Ball.create(Color.RED));
+    bag.add(Ball.create(Color.RED));
+    bag.add(Ball.create(Color.RED));
+
+    assertFalse(bag.add(Ball.create(Color.BLUE)));
   }
 }

@@ -1,16 +1,19 @@
 package com.tw.bootcamp.problem5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Bag {
 
   private final int maxCapacity;
-  private final ArrayList<Ball> balls;
+  private final HashMap<Color, ArrayList<Ball>> balls;
+  private int capacity;
 
-  private Bag(int maxCapacity, ArrayList<Ball> balls) {
+  private Bag(int maxCapacity, HashMap<Color, ArrayList<Ball>> balls) {
     this.maxCapacity = maxCapacity;
     this.balls = balls;
+    this.capacity = 0;
   }
 
   public static Bag create(int maxCapacity) {
@@ -18,27 +21,38 @@ public class Bag {
       throw new InvalidBagCreationError("Capacity should be positive");
     }
 
-    return new Bag(maxCapacity, new ArrayList<Ball>());
+    return new Bag(maxCapacity, new HashMap<Color, ArrayList<Ball>>());
   }
 
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Bag bag = (Bag) o;
-    return maxCapacity == bag.maxCapacity;
+    return maxCapacity == bag.maxCapacity && Objects.equals(balls, bag.balls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(maxCapacity);
+    return Objects.hash(maxCapacity, balls);
   }
 
   public boolean add(Ball ball) {
-    if (balls.size() >= maxCapacity) {
+    if (capacity >= maxCapacity) {
       return false;
     }
 
-    balls.add(ball);
+    capacity++;
+    organizeBall(ball);
     return true;
+  }
+
+  private void organizeBall(Ball ball) {
+    Color color = ball.getColor();
+
+    if (!balls.containsKey(color)) {
+      balls.put(color, new ArrayList<>());
+    }
+
+    balls.get(color).add(ball);
   }
 }
