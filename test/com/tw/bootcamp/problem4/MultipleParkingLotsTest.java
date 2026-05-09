@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class MultipleParkingLotsTest {
   @Test
   void shouldCreateMultipleParkingLots() {
-    MultipleParkingLots multipleParkingLots = MultipleParkingLots.create(2);
-    assertEquals(multipleParkingLots, MultipleParkingLots.create(2));
+    MultipleParkingLots multipleParkingLots = MultipleParkingLots.create(2,
+            ParkingLot.create(10));
+    assertEquals(multipleParkingLots, MultipleParkingLots.create(2,
+            ParkingLot.create(10)));
   }
 }
