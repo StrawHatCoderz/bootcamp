@@ -38,4 +38,27 @@ class MultipleParkingLotsTest {
     verify(parkingLotAttender).park(car, parkingLot);
     verify(parkingLotAssistant).update(parkingLot);
   }
+
+  @Test
+  void shouldAttendsGetOnlySlotsAvailableParkingLot() {
+    ParkingLotAssistant parkingLotAssistant = mock(ParkingLotAssistant.class);
+    ParkingLotAttender parkingLotAttender = mock(ParkingLotAttender.class);
+    ParkingLotManager parkingLotManager = mock(ParkingLotManager.class);
+
+    ParkingLot parkingLot = ParkingLot.create(10);
+
+    MultipleParkingLots multipleParkingLots = MultipleParkingLots.create(
+            2,
+            parkingLot,
+            parkingLotAssistant,
+            parkingLotAttender
+    );
+
+    Car car = new Car("BH47");
+
+    multipleParkingLots.park(car);
+
+    verify(parkingLotAttender).park(car, parkingLot);
+    verify(parkingLotAssistant).update(parkingLot);
+  }
 }
