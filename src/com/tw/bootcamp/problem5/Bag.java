@@ -5,47 +5,36 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Bag {
-
-  private final int maxCapacity;
   private final HashMap<Color, ArrayList<Ball>> balls;
-  private int capacity;
+  private final Rule rule;
 
-  private Bag(int maxCapacity, HashMap<Color, ArrayList<Ball>> balls) {
-    this.maxCapacity = maxCapacity;
+  private Bag(HashMap<Color, ArrayList<Ball>> balls, Rule rule) {
     this.balls = balls;
-    this.capacity = 0;
+    this.rule = rule;
   }
 
-  public static Bag create(int maxCapacity) {
-    if (maxCapacity < 0) {
-      throw new InvalidBagCreationError("Capacity should be positive");
-    }
-
-    return new Bag(maxCapacity, new HashMap<Color, ArrayList<Ball>>());
+  public static Bag create(Rule rule) {
+    return new Bag(new HashMap<Color, ArrayList<Ball>>(), rule);
   }
 
   @Override
   public boolean equals(Object o) {
     if (o == null || getClass() != o.getClass()) return false;
     Bag bag = (Bag) o;
-    return maxCapacity == bag.maxCapacity && Objects.equals(balls, bag.balls);
+    return Objects.equals(balls, bag.balls) && Objects.equals(rule, bag.rule);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxCapacity, balls);
+    return Objects.hash(balls, rule);
   }
 
   public boolean add(Ball ball) {
-    if (capacity >= maxCapacity) {
+    if (!rule.canAdd(ball.getColor(), balls)) {
       return false;
     }
 
-    if (!ball.getColor().canAdd()) {
-      return false;
-    }
-
-    capacity = capacity + 1;
+    rule.updateCurrentCount();
     organizeBall(ball);
     return true;
   }

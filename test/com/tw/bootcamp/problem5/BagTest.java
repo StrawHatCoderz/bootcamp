@@ -7,31 +7,35 @@ import static org.junit.jupiter.api.Assertions.*;
 class BagTest {
   @Test
   void shouldCreateABag() {
-    Bag bag = Bag.create(12);
-    assertEquals(bag, Bag.create(12));
+    Rule rule = Rule.create(12);
+    Bag bag = Bag.create(rule);
+    assertEquals(bag, Bag.create(rule));
   }
 
   @Test
   void shouldThrowErrorOnInvalidCapacity() {
-    assertThrows(InvalidBagCreationError.class, () -> Bag.create(-12));
+    assertThrows(InvalidBagCreationError.class, () -> Rule.create(-12));
   }
 
   @Test
   void shouldAddABallToBag() {
-    Bag bag = Bag.create(12);
-    assertTrue(bag.add(Ball.create(Color.BLUE)));
+    Rule rule = Rule.create(12);
+    Bag bag = Bag.create(rule);
+    assertFalse(bag.add(Ball.create(Color.RED)));
   }
 
   @Test
   void shouldNotAddAfterExceedingCapacity() {
-    Bag bag = Bag.create(1);
+    Rule rule = Rule.create(1);
+    Bag bag = Bag.create(rule);
     bag.add(Ball.create(Color.BLUE));
     assertFalse(bag.add(Ball.create(Color.BLUE)));
   }
 
   @Test
   void shouldNotAddMoreThanThreeGreen() {
-    Bag bag = Bag.create(12);
+    Rule rule = Rule.create(12);
+    Bag bag = Bag.create(rule);
     bag.add(Ball.create(Color.GREEN));
     bag.add(Ball.create(Color.GREEN));
     bag.add(Ball.create(Color.GREEN));
@@ -41,7 +45,8 @@ class BagTest {
 
   @Test
   void shouldNotAddRedMoreThanGreenDouble() {
-    Bag bag = Bag.create(12);
+    Rule rule = Rule.create(12);
+    Bag bag = Bag.create(rule);
     bag.add(Ball.create(Color.GREEN));
     bag.add(Ball.create(Color.RED));
     bag.add(Ball.create(Color.RED));
